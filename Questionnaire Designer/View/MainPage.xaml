@@ -23,7 +23,7 @@
 
         
         
-            <ListView BorderBrush="#484848" Grid.Column="0" Margin="16" ItemsSource="{Binding Questions}" HorizontalContentAlignment="Stretch" Name="lvQuestions" SelectionChanged="lvQuestions_SelectionChanged">
+            <ListView BorderBrush="#484848" Grid.Column="0" Margin="16" ItemsSource="{Binding Questions}" HorizontalContentAlignment="Stretch" Name="lvQuestions">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Border BorderBrush="Black" BorderThickness="1">
@@ -57,26 +57,27 @@
         
         <StackPanel Grid.Column="0" Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
             <Button Content="Добавить вопрос" Name="bAddQuestion" Click="bAddQuestion_Click" Width="120" Margin="5"/>
-            <Button Content="Удалить вопрос" Width="120" Margin="5" Click="Button_Click" />
+            <Button Content="Удалить вопрос" Width="120" Margin="5" Click="bDeleteQuestion_Click" />
         </StackPanel>
 
-
-        <ListView BorderBrush="#484848" Grid.Column="1" Margin="16" HorizontalContentAlignment="Stretch" Name="lvQuestionnaire" SelectionChanged="lvQuestionnaire_SelectionChanged">
+        <ListView BorderBrush="#484848" Grid.Column="1" Margin="16" ItemsSource="{Binding Form}" HorizontalContentAlignment="Stretch" Name="lvForms">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Border BorderBrush="Black" BorderThickness="1">
                         <TextBlock Margin="6">
-
+                    <Run FontWeight="Bold">Описание: </Run>
+                    <Run Text="{Binding Name}"/>
+                    <LineBreak/>
+                    <Run FontWeight="Bold">Тип вопроса: </Run>
+                    <Run Text="{Binding Description}"/>
                         </TextBlock>
                     </Border>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-
-
         <StackPanel Grid.Column="1" Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
-            <Button Content="Создать опрос" Width="120" Margin="5" Click="Button_Click_1" />
-            <Button Content="Удалить опрос" Width="120" Margin="5" />
+            <Button Content="Создать опрос" Width="120" Margin="5" Click="bCreateForm" />
+            <Button Content="Удалить опрос" Width="120" Margin="5" Click="bDeleteForm_Click" />
         </StackPanel>
     </Grid>
 </Page>

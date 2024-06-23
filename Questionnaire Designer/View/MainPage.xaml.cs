@@ -24,6 +24,7 @@ namespace Questionnaire_Designer.View
         private readonly ConstructorEntities database;
         public ObservableCollection<Question> Questions { get; set; }
         public ObservableCollection<Answer> Answers { get; set; }
+        public ObservableCollection<Form> Form { get; set; }
         public MainPage(ConstructorEntities entities)
         {
             InitializeComponent();
@@ -38,23 +39,17 @@ namespace Questionnaire_Designer.View
         {
             Questions = new ObservableCollection<Question>(database.Questions);
             Answers = new ObservableCollection<Answer>(database.Answers);
-        }
-        private void lvQuestionnaire_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
+            Form = new ObservableCollection<Form>(database.Forms);
+        } 
 
-        }
-
-        private void lvQuestions_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
+        
 
         private void bAddQuestion_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(ViewManager.QuestionsPage);
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void bDeleteQuestion_Click(object sender, RoutedEventArgs e)
         {
             var question = lvQuestions.SelectedItem as Database.Question;
             database.Questions.Remove(question);
@@ -72,9 +67,26 @@ namespace Questionnaire_Designer.View
 
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void bCreateForm(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(ViewManager.QuestionnairePage);
+        }
+
+  
+
+        private void bDeleteForm_Click(object sender, RoutedEventArgs e)
+        {
+            var forms = lvForms.SelectedItem as Database.Form;
+            database.Forms.Remove(forms);
+            lvForms.SelectedItems.Clear();
+            database.SaveChanges();
+            LoadData();
+
+
+            lvForms.ItemsSource = Form;
+
+
+            MessageBox.Show("Анкета удалена.");
         }
     }
 }

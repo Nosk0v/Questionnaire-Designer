@@ -37,17 +37,21 @@ namespace Questionnaire_Designer.View
         private void LoadData()
         {
             Questions = new ObservableCollection<Question>(database.Questions);
-           
+            SelectedQuestions = new ObservableCollection<Question>();
         }
 
         private void bInMenu_Click(object sender, RoutedEventArgs e)
         {
-
+            var selectedQuestion = lvQuestions.SelectedItem as Database.Question;
+            SelectedQuestions.Add(selectedQuestion);
+           
         }
 
         private void bOutMenu_Click(object sender, RoutedEventArgs e)
         {
-
+            var selectedQuestion = lvSelectQuestions.SelectedItem as Database.Question;
+            SelectedQuestions.Remove(selectedQuestion);
+            bInMenu.IsEnabled = true;
         }
 
         private void GoToBack_Click(object sender, RoutedEventArgs e)
@@ -57,22 +61,50 @@ namespace Questionnaire_Designer.View
 
         private void lvQuestions_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            bInMenu.IsEnabled = true;
+            bOutMenu.IsEnabled = false;
         }
 
-        private void lvSelectedIngridients_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void lvSelect_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {                               
+            bOutMenu.IsEnabled = true;
+            bInMenu.IsEnabled = false;
+        }
+        private void ClearForm()
         {
-
+            lvSelectQuestions.ItemsSource = null;
+            SelectedQuestions.Clear();
+            tbName.Clear();
+            tbdescripton.Clear();
         }
-
         private void Save_Click(object sender, RoutedEventArgs e)
         {
+            
+            var name = tbName.Text;
+            var description = tbdescripton.Text;
+            if (name == "" || description == "")
+            {
+                MessageBox.Show("Заполните данные");
+                return;
+            }
+            Form form = new Form();
+            form.Name = name;
+            form.Description = description;
+            database.Forms.Add(form);
+            database.SaveChanges();
 
+            foreach(var questions in SelectedQuestions)
+            {
+                Questionnaire questionnaire = new Questionnaire();
+                questionnaire.QuestionID = questions.ID;
+                questionnaire.FormsID = form.ID;
+                database.Questionnaires.Add(questionnaire);
+                database.SaveChanges();
+            }
+            MessageBox.Show("Успешно сохранено!");
+            ClearForm();
         }
 
-        private void tbName_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
+        
     }
 }

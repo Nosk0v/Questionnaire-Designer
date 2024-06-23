@@ -51,14 +51,16 @@
         </StackPanel>
 
 
-        <ListView Grid.Column="2" Margin="16"  BorderBrush="#484848" HorizontalContentAlignment="Stretch" Name="lvSelectedIngridients" ItemsSource="{Binding SelectedIngredients}" SelectionChanged="lvSelectedIngridients_SelectionChanged">
+        <ListView BorderBrush="#484848" Grid.Column="2" Margin="16" ItemsSource="{Binding SelectedQuestions}" HorizontalContentAlignment="Stretch" Name="lvSelectQuestions" SelectionChanged="lvSelect_SelectionChanged">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Border BorderBrush="Black" BorderThickness="1">
                         <TextBlock Margin="6">
-                         <Run FontWeight="Bold">Название: </Run>
-                         <Run Text="{Binding name}"/>
-                         
+            <Run FontWeight="Bold">Описание: </Run>
+            <Run Text="{Binding Description}"/>
+            <LineBreak/>
+            <Run FontWeight="Bold">Тип вопроса: </Run>
+            <Run Text="{Binding QuestionType1.Name}"/>
                         </TextBlock>
                     </Border>
                 </DataTemplate>
@@ -66,24 +68,23 @@
         </ListView>
 
 
-        
+
 
         <Border Grid.Column="3" Margin="16">
             <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="0.1*"/>
+                    <RowDefinition />
                     <RowDefinition/>
                 </Grid.RowDefinitions>
 
 
                 <Grid VerticalAlignment="Center">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="0.5*"/>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
-
-                    <Label FontWeight="Bold" Content="Название:"></Label>
-                    <TextBox Grid.Column="1" Name="tbName" VerticalContentAlignment="Center" Text="{Binding Menu.name}" TextChanged="tbName_TextChanged"/>
+                    <StackPanel>
+                    <Label FontWeight="Bold" Content="Название анкеты:"></Label>
+                    <TextBox  Name="tbName" VerticalContentAlignment="Center"/>
+                    <Label FontWeight="Bold" Content="Описание анкеты:"></Label>
+                    <TextBox  Name="tbdescripton" Height="100"/>
+                    </StackPanel>
                 </Grid>
             </Grid>
 
