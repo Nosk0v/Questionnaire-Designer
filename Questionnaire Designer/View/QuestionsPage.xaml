@@ -1,0 +1,81 @@
+﻿<Page x:Class="Questionnaire_Designer.View.QuestionsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Questionnaire_Designer.View"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="QuestionsPage">
+
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+            
+        <StackPanel>
+            <Border  BorderThickness="1" BorderBrush="#484848" Margin="16 6"  HorizontalAlignment="Left">
+                <Button Background="Transparent" BorderThickness="0" Foreground="#484848" Click="GoToBack_Click" Width="130">
+                    Назад
+                </Button>
+            </Border>
+            <Border  BorderThickness="1" BorderBrush="#484848" Margin="16 6"  HorizontalAlignment="Left">
+                <Button Background="Transparent" BorderThickness="0" Foreground="#484848" Click="Save_Click" Width="130">
+                    Сохранить
+                </Button>
+            </Border>
+
+
+            <StackPanel Grid.Row="0" Grid.ColumnSpan="2" Margin="20">
+            <TextBlock Text="Описание" FontWeight="Bold" />
+            <TextBox Height="30" Name="tbDescription" />
+            </StackPanel>
+
+        
+            <StackPanel Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" Margin="20 10 10 10">
+                <TextBlock Text="Тип вопроса" FontWeight="Bold" />
+                <ComboBox Width="200" Height="30" DisplayMemberPath="Name" HorizontalAlignment="Left" Name="cbQuestionType" SelectionChanged="cbQuestionType_SelectionChanged" ItemsSource="{Binding QuestionType}"/>
+            </StackPanel>
+            
+            <Rectangle Grid.Row="2" Grid.ColumnSpan="2" Height="2" Fill="#484848" Margin="0,10,0,10"/>
+
+
+            <StackPanel Grid.Row="3" Grid.ColumnSpan="2" Margin="20 10 10 10" Visibility="Collapsed" Name="spInputField">
+                <TextBlock Text="Поле для ответа" FontWeight="Bold" />
+                <TextBox Name="AnswerTextBox" Height="30" IsEnabled="False"/>
+            </StackPanel>
+
+
+            <StackPanel Grid.Row="4" Grid.ColumnSpan="2" Margin="20 10 10 10" Visibility="Collapsed" Name="spAnswerOptions">
+                <TextBlock Text="Варианты ответов" FontWeight="Bold" Margin="0,0,0,10" />
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
+                    <CheckBox Name="Option1CheckBox" VerticalAlignment="Center" Margin="0,0,5,0" IsEnabled="False"/>
+                    <TextBox Name="Option1TextBox" Width="200" Height="30"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
+                    <CheckBox Name="Option2CheckBox" VerticalAlignment="Center" Margin="0,0,5,0" IsEnabled="False"/>
+                    <TextBox Name="Option2TextBox" Width="200" Height="30"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
+                    <CheckBox Name="Option3CheckBox" VerticalAlignment="Center" Margin="0,0,5,0" IsEnabled="False"/>
+                    <TextBox Name="Option3TextBox" Width="200" Height="30"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <CheckBox Name="Option4CheckBox" VerticalAlignment="Center" Margin="0,0,5,0" IsEnabled="False"/>
+                    <TextBox Name="Option4TextBox" Width="200" Height="30"/>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+
+
+    </Grid>
+</Page>

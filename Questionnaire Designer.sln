@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34221.43
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Questionnaire Designer", "Questionnaire Designer\Questionnaire Designer.csproj", "{AAA360FF-1DA2-4255-A8C0-684D18EC0190}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Database", "Database\Database.csproj", "{81D29B2C-F63F-4AF4-8535-AAFDA5C69BA9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AAA360FF-1DA2-4255-A8C0-684D18EC0190}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AAA360FF-1DA2-4255-A8C0-684D18EC0190}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AAA360FF-1DA2-4255-A8C0-684D18EC0190}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AAA360FF-1DA2-4255-A8C0-684D18EC0190}.Release|Any CPU.Build.0 = Release|Any CPU
+		{81D29B2C-F63F-4AF4-8535-AAFDA5C69BA9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{81D29B2C-F63F-4AF4-8535-AAFDA5C69BA9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{81D29B2C-F63F-4AF4-8535-AAFDA5C69BA9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{81D29B2C-F63F-4AF4-8535-AAFDA5C69BA9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {16705F52-20D5-4243-AC74-F925F3BD6BDE}
+	EndGlobalSection
+EndGlobal
